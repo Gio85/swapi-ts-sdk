@@ -26,7 +26,7 @@ export class FilmsEndpoint {
    * example { search: 'Return of the Jedi' }
    * This method can also be used to paginate the result
    * example { page: 1 }
-   * They can be passed in together
+   * They can be used together
    */
   public list(parameters?: Partial<IParameters>): ApiResponse<IFilm> {
     if (parameters) {
