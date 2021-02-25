@@ -1,0 +1,10 @@
+node_modules
+.idea
+*.env
+yarn-error.log
+dist
+.DS_Store
+# Http client payloads
+**/http/*.json
+coverage
+*local.*
