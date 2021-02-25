@@ -3,10 +3,7 @@ export enum HOST {
 }
 
 export enum HTTP_METHOD {
-  POST = 'post',
   GET = 'get',
-  PUT = 'put',
-  PATCH = 'patch',
 }
 
 export enum ENDPOINT {
@@ -15,5 +12,5 @@ export enum ENDPOINT {
   FILMS = 'films',
   SPECIES = 'species',
   VEHICLES = 'vehicles',
-  STARSHIPS = 'starships'
+  STARSHIPS = 'starships',
 }

@@ -1,20 +1,24 @@
 export * from './enums'
 
 export interface IHttpClient {
-  post<Input, Output>(path: string, payload: Input): ApiResponse<Output>
-
-  get<Output, Input = {}>(path: string, payload?: Input): ApiResponse<Output>
-
-  put<Input>(path: string, payload: Input): ApiResponse<Input>
-
-  patch<Input, Output>(path: string, payload: Input): ApiResponse<Output>
+  get<T>(path: string, parameter?: any): ApiResponse<T>
 }
 
-export type ApiResponse<T> = Promise<IApiResponse<T>>
+export type ApiResponse<T> = Promise<IApiResponse<T> | (T & { status: number })>
 
 export interface IApiResponse<T> {
-  data: T
+  count: number
+  next: string | null
+  previous: string | null
+  results: T[]
+  status: number
 }
+
+export interface ISearch {
+  search: string | number
+}
+
+export type TWookie = Record<string, any>
 
 interface IResource {
   edited: string
