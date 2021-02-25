@@ -14,8 +14,9 @@ export interface IApiResponse<T> {
   status: number
 }
 
-export interface ISearch {
+export interface IParameters {
   search: string | number
+  page: number
 }
 
 export type TWookie = Record<string, any>

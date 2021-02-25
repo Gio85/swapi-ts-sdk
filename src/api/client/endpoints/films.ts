@@ -1,5 +1,5 @@
 import { ENDPOINT } from '../../../enums'
-import { ApiResponse, IFilm, IHttpClient, IResourceSchema, ISearch } from '../../../types'
+import { ApiResponse, IFilm, IHttpClient, IResourceSchema, IParameters } from '../../../types'
 
 export class FilmsEndpoint {
   public path: string = `${ENDPOINT.FILMS}`
@@ -20,12 +20,15 @@ export class FilmsEndpoint {
   }
 
   /**
-   * This method will return the film list if the parameters will not pass
-   * Otherwise it will try to fetch the resource based on the parameters
+   * This method will return the film list
+   * Searchable field fot this resource is the `title`
    * @param parameters
    * example { search: 'Return of the Jedi' }
+   * This method can also be used to paginate the result
+   * example { page: 1 }
+   * They can be passed in together
    */
-  public list(parameters?: ISearch): ApiResponse<IFilm> {
+  public list(parameters?: Partial<IParameters>): ApiResponse<IFilm> {
     if (parameters) {
       return this.client.get<IFilm>(this.path, { ...parameters })
     }
