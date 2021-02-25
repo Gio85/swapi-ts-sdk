@@ -5,7 +5,7 @@
 [![!npm type definitions](https://img.shields.io/npm/types/typescript)](https://github.com/microsoft/TypeScript)
 [![licence](https://img.shields.io/badge/licence-MIT-success)](https://choosealicense.com/)
 
-This is a side project based on [SWAPI](https://github.com/Juriy/swapi)
+This is a side project based on [SWAPI](https://github.com/Juriy/swapi)  
 Bare in mind that this is just a typescript wrapper to the main api project.
 
 It will be available on `npm` soon....
