@@ -4,7 +4,7 @@ export interface IHttpClient {
   get<T>(path: string, parameter?: any): ApiResponse<T>
 }
 
-export type ApiResponse<T> = Promise<IApiResponse<T> | (T & { status: number })>
+export type ApiResponse<T> = Promise<IApiResponse<T> & (T & { status: number })>
 
 export interface IApiResponse<T> {
   count: number

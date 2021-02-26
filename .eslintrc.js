@@ -4,7 +4,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended'],
   rules: {
-    'max-len': ['error', { code: 120 }],
+    'max-len': ['error', { code: 140 }],
     '@typescript-eslint/no-empty-interface': ['off'],
     '@typescript-eslint/interface-name-prefix': ['off'],
     '@typescript-eslint/no-use-before-define': ['off'],
@@ -20,7 +20,7 @@ module.exports = {
     ],
     '@typescript-eslint/explicit-function-return-type': ['error'],
     '@typescript-eslint/quotes': ['error', 'single', { allowTemplateLiterals: true }],
-    '@typescript-eslint/no-explicit-any': ['error'],
+    '@typescript-eslint/no-explicit-any': ['off'],
   },
-  ignorePatterns: ['*.spec.ts', '*.test.ts', 'node_modules', 'packages', '*.local.*', 'dist', '*.e2e-spec.*'],
-};
+  ignorePatterns: ['*.spec.ts', '*.test.ts', 'node_modules', 'packages', '*local.*', 'dist', '*.e2e-spec.*'],
+}
