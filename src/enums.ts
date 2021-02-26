@@ -14,3 +14,7 @@ export enum ENDPOINT {
   VEHICLES = 'vehicles',
   STARSHIPS = 'starships',
 }
+
+export enum FORMAT {
+  WOOKIEE = 'wookiee'
+}

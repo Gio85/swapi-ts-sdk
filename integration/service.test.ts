@@ -41,4 +41,40 @@ describe('SDK', () => {
       expect(schema.required.length).toBeGreaterThan(1)
     })
   })
+
+  describe('People', () => {
+    it('should fetch a list of people', async () => {
+      const people = await client.people.list()
+      expect(people.status).toBe(200)
+      expect(people.results.length).toBeGreaterThan(0)
+    })
+
+    it('should fetch a list of people passing the page', async () => {
+      const people = await client.people.list({ page: 3 })
+      expect(people.status).toBe(200)
+      expect(people.results.length).toBeGreaterThan(0)
+    })
+
+    it('should find a person based on the search', async () => {
+      const name = 'Luke'
+      const people = await client.people.list({ search: name })
+      expect(people.status).toBe(200)
+      expect(people.count).toBe(1)
+      expect(people.results[0].name).toContain(name)
+    })
+
+    it('should read a person', async () => {
+      const singlePerson = await client.people.read('1')
+      expect(singlePerson.status).toBe(200)
+      expect(singlePerson).toHaveProperty('name')
+    })
+
+    it('should get the people schema', async () => {
+      const schema = await client.people.getSchema()
+      expect(schema.status).toBe(200)
+      expect(typeof schema.description).toBe('string')
+      expect(typeof schema.title).toBe('string')
+      expect(schema.required.length).toBeGreaterThan(1)
+    })
+  })
 })
