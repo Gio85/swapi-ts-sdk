@@ -2,7 +2,7 @@ import { ENDPOINT } from '../../../enums'
 import { ApiResponse, IFilm, IHttpClient, IResourceSchema, IParameters } from '../../../types'
 
 export class FilmsEndpoint {
-  public path: string = `${ENDPOINT.FILMS}`
+  public path = `${ENDPOINT.FILMS}`
   constructor(protected readonly client: IHttpClient) {}
 
   /**

@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+    tests:
+        container_name: sdk-tests
+        image: swapi-sdk-tests:latest
+        networks:
+            - swapi-sdk-tests
+        build:
+            context: ../
+            target: tests
+            dockerfile: ./integration/integration.dockerfile
+        tty: true
+
+networks:
+    swapi-sdk-tests:
