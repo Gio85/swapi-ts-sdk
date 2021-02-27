@@ -14,6 +14,12 @@ export interface IApiResponse<T> {
   status: number
 }
 
+export interface IApiError {
+  message: string
+  endpoint: string
+  statusCode?: number
+}
+
 export interface IParameters {
   search: string | number
   page: number
