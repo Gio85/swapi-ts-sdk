@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Gio85/swapi-ts-sdk/compare/v1.0.2...v1.0.3) (2021-02-27)
+
+
+### Bug Fixes
+
+* **docs:** bump version ([8d82e7c](https://github.com/Gio85/swapi-ts-sdk/commit/8d82e7ca540f40a3047367f092e28f5b28305568))
+
 ## [1.0.2](https://github.com/Gio85/swapi-ts-sdk/compare/v1.0.1...v1.0.2) (2021-02-27)
 
 
