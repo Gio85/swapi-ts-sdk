@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Gio85/swapi-ts-sdk/compare/v1.0.4...v1.0.5) (2021-02-27)
+
+
+### Bug Fixes
+
+* **client:** update films typo ([fcf3e23](https://github.com/Gio85/swapi-ts-sdk/commit/fcf3e232b648e8776c31a345fa0a0639a3494019))
+
 ## [1.0.4](https://github.com/Gio85/swapi-ts-sdk/compare/v1.0.3...v1.0.4) (2021-02-27)
 
 
