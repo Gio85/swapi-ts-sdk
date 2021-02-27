@@ -13,6 +13,14 @@ describe('SDK', () => {
   })
 
   describe('Films', () => {
+    it('should fail reading a film', async () => {
+      await client.film.read('2000').catch((e) => {
+        expect(e.endpoint).toBe('films/2000')
+        expect(e.message).toContain('Not found')
+        expect(e.statusCode).toBe(404)
+      })
+    })
+
     it('should fetch a list of films', async () => {
       const films = await client.film.list()
       expect(films.status).toBe(200)
@@ -43,6 +51,13 @@ describe('SDK', () => {
   })
 
   describe('People', () => {
+    it('should fail reading a person', async () => {
+      await client.people.read('2000').catch((e) => {
+        expect(e.endpoint).toBe('people/2000')
+        expect(e.message).toContain('Not found')
+        expect(e.statusCode).toBe(404)
+      })
+    })
     it('should fetch a list of people', async () => {
       const people = await client.people.list()
       expect(people.status).toBe(200)
@@ -84,6 +99,14 @@ describe('SDK', () => {
   })
 
   describe('Planets', () => {
+    it('should fail reading a planet', async () => {
+      await client.planets.read('2000').catch((e) => {
+        expect(e.endpoint).toBe('planets/2000')
+        expect(e.message).toContain('Not found')
+        expect(e.statusCode).toBe(404)
+      })
+    })
+
     it('should fetch a list of planets', async () => {
       const planets = await client.planets.list()
       expect(planets.status).toBe(200)
@@ -125,6 +148,14 @@ describe('SDK', () => {
   })
 
   describe('Species', () => {
+    it('should fail reading a species', async () => {
+      await client.species.read('2000').catch((e) => {
+        expect(e.endpoint).toBe('species/2000')
+        expect(e.message).toContain('Not found')
+        expect(e.statusCode).toBe(404)
+      })
+    })
+
     it('should fetch a list of species', async () => {
       const species = await client.species.list()
       expect(species.status).toBe(200)
@@ -167,6 +198,14 @@ describe('SDK', () => {
   })
 
   describe('Starships', () => {
+    it('should fail reading a starship', async () => {
+      await client.starships.read('2000').catch((e) => {
+        expect(e.endpoint).toBe('starships/2000')
+        expect(e.message).toContain('Not found')
+        expect(e.statusCode).toBe(404)
+      })
+    })
+
     it('should fetch a list of starships', async () => {
       const starships = await client.starships.list()
       expect(starships.status).toBe(200)
@@ -211,6 +250,14 @@ describe('SDK', () => {
   })
 
   describe('Vehicles', () => {
+    it('should fail reading a vehicle', async () => {
+      await client.vehicles.read('2000').catch((e) => {
+        expect(e.endpoint).toBe('vehicles/2000')
+        expect(e.message).toContain('Not found')
+        expect(e.statusCode).toBe(404)
+      })
+    })
+
     it('should fetch a list of vehicles', async () => {
       const vehicles = await client.vehicles.list()
       expect(vehicles.status).toBe(200)

@@ -1,5 +1,6 @@
 import { ApiResponse, HOST, IHttpClient } from '../../../types'
-import Axios, { AxiosRequestConfig } from 'axios'
+import Axios, { AxiosError, AxiosRequestConfig } from 'axios'
+import { ApiError } from '../errors'
 
 export class HttpClient implements Partial<IHttpClient> {
   protected api: string = process.env.HOST_API || HOST.API
@@ -10,7 +11,9 @@ export class HttpClient implements Partial<IHttpClient> {
       ...this.getRequestConfig(),
     })
       .then(({ data, ...request }) => ({ ...data, status: request.status }))
-      .catch(error => console.log(error))
+      .catch((error) => {
+        return this.errorParser(error, endpoint)
+      })
   }
 
   protected getRequestConfig(): AxiosRequestConfig {
@@ -20,5 +23,17 @@ export class HttpClient implements Partial<IHttpClient> {
       },
     }
     return config
+  }
+
+  protected errorParser(error: AxiosError, endpoint: string): Error {
+    let message: string
+    let statusCode: number | null = null
+    if (!error.response || !error.response.data) {
+      message = `Api client error - ${error.toString()}`
+    } else {
+      statusCode = error.response.status
+      message = error.response.data.detail
+    }
+    throw ApiError.invalidResponse({ message, statusCode, endpoint })
   }
 }
