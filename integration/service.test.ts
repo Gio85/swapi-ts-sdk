@@ -14,7 +14,7 @@ describe('SDK', () => {
 
   describe('Films', () => {
     it('should fail reading a film', async () => {
-      await client.film.read('2000').catch((e) => {
+      await client.films.read('2000').catch((e) => {
         expect(e.endpoint).toBe('films/2000')
         expect(e.message).toContain('Not found')
         expect(e.statusCode).toBe(404)
@@ -22,27 +22,27 @@ describe('SDK', () => {
     })
 
     it('should fetch a list of films', async () => {
-      const films = await client.film.list()
+      const films = await client.films.list()
       expect(films.status).toBe(200)
       expect(films.results.length).toBeGreaterThan(0)
     })
 
     it('should find a film based on the search', async () => {
       const title = 'Return of the Jedi'
-      const film = await client.film.list({ search: title })
+      const film = await client.films.list({ search: title })
       expect(film.status).toBe(200)
       expect(film.count).toBe(1)
       expect(film.results[0].title).toBe(title)
     })
 
     it('should read a film', async () => {
-      const film = await client.film.read('1')
+      const film = await client.films.read('1')
       expect(film.status).toBe(200)
       expect(film).toHaveProperty('title')
     })
 
     it('should get the film schema', async () => {
-      const schema = await client.film.getSchema()
+      const schema = await client.films.getSchema()
       expect(schema.status).toBe(200)
       expect(typeof schema.description).toBe('string')
       expect(typeof schema.title).toBe('string')

@@ -13,7 +13,7 @@ env.config()
 export class ApiClient {
   protected client: HttpClient
   private static instance: ApiClient
-  public film: FilmsEndpoint
+  public films: FilmsEndpoint
   public people: PeopleEndpoint
   public planets: PlanetsEndpoint
   public species: SpeciesEndpoint
@@ -22,7 +22,7 @@ export class ApiClient {
 
   protected constructor(public readonly host = process.env.HOST_API || process.env.REACT_APP_HOST_API || HOST.API) {
     this.client = new HttpClient()
-    this.film = new FilmsEndpoint(this.client)
+    this.films = new FilmsEndpoint(this.client)
     this.people = new PeopleEndpoint(this.client)
     this.planets = new PlanetsEndpoint(this.client)
     this.species = new SpeciesEndpoint(this.client)
