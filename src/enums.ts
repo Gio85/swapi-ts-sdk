@@ -18,3 +18,4 @@ export enum ENDPOINT {
 export enum FORMAT {
   WOOKIEE = 'wookiee'
 }
+
