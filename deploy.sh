@@ -36,8 +36,6 @@ require_clean_work_tree () {
 
 require_clean_work_tree "$@"
 
-yarn test --coverage
-
 if  [[ $1 == "integration" ]] ; then
   docker-compose -f ./integration/test.yml build
   docker-compose -f ./integration/test.yml up --abort-on-container-exit --exit-code-from tests tests
