@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Gio85/swapi-ts-sdk/compare/v1.0.1...v1.0.2) (2021-02-27)
+
+
+### Bug Fixes
+
+* **api client:** add client to the types ([3c3cb89](https://github.com/Gio85/swapi-ts-sdk/commit/3c3cb89fb8f3176eb0a0b51c0872313b808b2334))
+
 ## [1.0.1](https://github.com/Gio85/swapi-ts-sdk/compare/v1.0.0...v1.0.1) (2021-02-27)
 
 

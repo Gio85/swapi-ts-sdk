@@ -1,6 +1,6 @@
 {
   "name": "swapi-ts-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SDK to fetch SWAPI in typescript",
   "license": "MIT",
   "private": false,
