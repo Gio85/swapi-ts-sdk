@@ -5,6 +5,7 @@ set -e
 # Temporary deployment script
 
 export CI=true
+export GH_TOKEN=${GIT_HUB_TOKEN}
 
 require_clean_work_tree () {
     # Update the index
