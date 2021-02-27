@@ -123,4 +123,46 @@ describe('SDK', () => {
       expect(wookiee.status).toBe(200)
     })
   })
+
+  describe('Species', () => {
+    it('should fetch a list of species', async () => {
+      const species = await client.species.list()
+      expect(species.status).toBe(200)
+      expect(species.results.length).toBeGreaterThan(0)
+    })
+
+    it('should fetch a list of species passing the page', async () => {
+      const species = await client.species.list({ page: 3 })
+      expect(species.status).toBe(200)
+      expect(species.results.length).toBeGreaterThan(0)
+    })
+
+    it('should find a specie based on the search', async () => {
+      const name = 'Wookie'
+      const specie = await client.species.list({ search: name })
+      expect(specie.status).toBe(200)
+      expect(specie.count).toBe(1)
+      expect(specie.results[0].name).toContain(name)
+    })
+
+    it('should read a specie', async () => {
+      const specie = await client.species.read('1')
+      expect(specie.status).toBe(200)
+      expect(specie).toHaveProperty('name')
+    })
+
+
+    it('should get the specie schema', async () => {
+      const schema = await client.species.getSchema()
+      expect(schema.status).toBe(200)
+      expect(typeof schema.description).toBe('string')
+      expect(typeof schema.title).toBe('string')
+      expect(schema.required.length).toBeGreaterThan(1)
+    })
+
+    it('should get wookiee', async () => {
+      const wookiee = await client.species.getWookiee('1')
+      expect(wookiee.status).toBe(200)
+    })
+  })
 })
