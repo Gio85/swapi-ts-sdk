@@ -165,4 +165,49 @@ describe('SDK', () => {
       expect(wookiee.status).toBe(200)
     })
   })
+
+  describe('Starships', () => {
+    it('should fetch a list of starships', async () => {
+      const starships = await client.starships.list()
+      expect(starships.status).toBe(200)
+      expect(starships.results.length).toBeGreaterThan(0)
+    })
+
+    it('should fetch a list of starships passing the page', async () => {
+      const starships = await client.starships.list({ page: 3 })
+      expect(starships.status).toBe(200)
+      expect(starships.results.length).toBeGreaterThan(0)
+    })
+
+    it('should find a starship based on the name', async () => {
+      const name = 'Death Star'
+      const starship = await client.starships.list({ search: name })
+      expect(starship.status).toBe(200)
+      expect(starship.count).toBe(1)
+      expect(starship.results[0].name).toContain(name)
+    })
+
+    it('should find a starship based on the model', async () => {
+      const model = 'DS-1'
+      const starship = await client.starships.list({ search: model })
+      expect(starship.status).toBe(200)
+      expect(starship.count).toBe(1)
+      expect(starship.results[0].model).toContain(model)
+    })
+
+    it('should read a starship', async () => {
+      const starship = await client.starships.read('2')
+      expect(starship.status).toBe(200)
+      expect(starship).toHaveProperty('name')
+    })
+
+
+    it('should get the starship schema', async () => {
+      const schema = await client.starships.getSchema()
+      expect(schema.status).toBe(200)
+      expect(typeof schema.description).toBe('string')
+      expect(typeof schema.title).toBe('string')
+      expect(schema.required.length).toBeGreaterThan(1)
+    })
+  })
 })
