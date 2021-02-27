@@ -201,7 +201,6 @@ describe('SDK', () => {
       expect(starship).toHaveProperty('name')
     })
 
-
     it('should get the starship schema', async () => {
       const schema = await client.starships.getSchema()
       expect(schema.status).toBe(200)
@@ -209,5 +208,50 @@ describe('SDK', () => {
       expect(typeof schema.title).toBe('string')
       expect(schema.required.length).toBeGreaterThan(1)
     })
+  })
+
+  describe('Vehicles', () => {
+    it('should fetch a list of vehicles', async () => {
+      const vehicles = await client.vehicles.list()
+      expect(vehicles.status).toBe(200)
+      expect(vehicles.results.length).toBeGreaterThan(0)
+    })
+
+    it('should fetch a list of vehicles passing the page', async () => {
+      const vehicles = await client.vehicles.list({ page: 3 })
+      expect(vehicles.status).toBe(200)
+      expect(vehicles.results.length).toBeGreaterThan(0)
+    })
+
+    it('should find a vehicle based on the name', async () => {
+      const name = 'Sand Crawler'
+      const vehicle = await client.vehicles.list({ search: name })
+      expect(vehicle.status).toBe(200)
+      expect(vehicle.count).toBe(1)
+      expect(vehicle.results[0].name).toContain(name)
+    })
+
+    it('should find a vehicle based on the model', async () => {
+      const model = 'Digger Crawler'
+      const vehicle = await client.vehicles.list({ search: model })
+      expect(vehicle.status).toBe(200)
+      expect(vehicle.count).toBe(1)
+      expect(vehicle.results[0].model).toContain(model)
+    })
+
+    it('should read a vehicle', async () => {
+      const vehicle = await client.vehicles.read('6')
+      expect(vehicle.status).toBe(200)
+      expect(vehicle).toHaveProperty('name')
+    })
+
+    it('should get the vehicle schema', async () => {
+      const schema = await client.vehicles.getSchema()
+      expect(schema.status).toBe(200)
+      expect(typeof schema.description).toBe('string')
+      expect(typeof schema.title).toBe('string')
+      expect(schema.required.length).toBeGreaterThan(1)
+    })
+
   })
 })
