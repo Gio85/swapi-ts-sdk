@@ -7,3 +7,4 @@
 
 This is a side project based on [SWAPI](https://github.com/Juriy/swapi)  
 For the docs please go to the wiki section of this project [DOCS](https://github.com/Gio85/swapi-ts-sdk/wiki).
+
