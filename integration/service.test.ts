@@ -76,5 +76,51 @@ describe('SDK', () => {
       expect(typeof schema.title).toBe('string')
       expect(schema.required.length).toBeGreaterThan(1)
     })
+
+    it('should get wookiee', async () => {
+      const wookiee = await client.people.getWookiee('1')
+      expect(wookiee.status).toBe(200)
+    })
+  })
+
+  describe('Planets', () => {
+    it('should fetch a list of planets', async () => {
+      const planets = await client.planets.list()
+      expect(planets.status).toBe(200)
+      expect(planets.results.length).toBeGreaterThan(0)
+    })
+
+    it('should fetch a list of planets passing the page', async () => {
+      const planets = await client.planets.list({ page: 3 })
+      expect(planets.status).toBe(200)
+      expect(planets.results.length).toBeGreaterThan(0)
+    })
+
+    it('should find a planet based on the search', async () => {
+      const name = 'Tatooine'
+      const planet = await client.planets.list({ search: name })
+      expect(planet.status).toBe(200)
+      expect(planet.count).toBe(1)
+      expect(planet.results[0].name).toContain(name)
+    })
+
+    it('should read a planet', async () => {
+      const planet = await client.planets.read('1')
+      expect(planet.status).toBe(200)
+      expect(planet).toHaveProperty('name')
+    })
+
+    it('should get the planet schema', async () => {
+      const schema = await client.planets.getSchema()
+      expect(schema.status).toBe(200)
+      expect(typeof schema.description).toBe('string')
+      expect(typeof schema.title).toBe('string')
+      expect(schema.required.length).toBeGreaterThan(1)
+    })
+
+    it('should get wookiee', async () => {
+      const wookiee = await client.planets.getWookiee('1')
+      expect(wookiee.status).toBe(200)
+    })
   })
 })

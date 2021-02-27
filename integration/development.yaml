@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+    tests-dev:
+      container_name: tests-dev
+      hostname: tests-dev
+      networks:
+        - swapi-sdk-tests-dev
+      volumes:
+        - ../:/service
+      entrypoint: ["yarn", "--cwd", "/service", "integration:dev"]
+      build:
+        context: ../
+        target: development
+        dockerfile: ./integration/integration.dockerfile
+      tty: true
+
+networks:
+    swapi-sdk-tests-dev:

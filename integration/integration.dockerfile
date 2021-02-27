@@ -1,5 +1,8 @@
 FROM node:14 as Base
 
+FROM Base as Development
+WORKDIR /service
+
 FROM Base as Builder
 WORKDIR /service
 COPY . .
