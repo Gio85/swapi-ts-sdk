@@ -41,6 +41,5 @@ if  [[ $1 == "integration" ]] ; then
   docker-compose -f ./integration/test.yml up --abort-on-container-exit --exit-code-from tests tests
 fi
 
-bash <(curl -s https://codecov.io/bash)
 npx semantic-release
 
