@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Gio85/swapi-ts-sdk/compare/v1.0.3...v1.0.4) (2021-02-27)
+
+
+### Bug Fixes
+
+* **dotenv:** fix dependencie issue ([77aeb48](https://github.com/Gio85/swapi-ts-sdk/commit/77aeb48e4263f489c96c0be6ea1996916f48f1d9))
+
 ## [1.0.3](https://github.com/Gio85/swapi-ts-sdk/compare/v1.0.2...v1.0.3) (2021-02-27)
 
 
