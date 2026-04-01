@@ -8,3 +8,4 @@ dist
 **/http/*.json
 coverage
 *local.*
+.claude/

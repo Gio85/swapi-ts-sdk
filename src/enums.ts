@@ -1,5 +1,5 @@
 export enum HOST {
-  API = 'https://swapi.dev/api',
+  API = 'http://localhost:3000',
 }
 
 export enum HTTP_METHOD {
@@ -7,15 +7,12 @@ export enum HTTP_METHOD {
 }
 
 export enum ENDPOINT {
-  PEOPLE = 'people',
+  CHARACTERS = 'characters',
   PLANETS = 'planets',
   FILMS = 'films',
   SPECIES = 'species',
   VEHICLES = 'vehicles',
   STARSHIPS = 'starships',
-}
-
-export enum FORMAT {
-  WOOKIEE = 'wookiee'
+  SEARCH = 'search',
 }
 

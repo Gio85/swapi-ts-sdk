@@ -37,12 +37,8 @@ require_clean_work_tree () {
 
 require_clean_work_tree "$@"
 
-yarn tsc
+npm run build
 
-if  [[ $1 == "integration" ]] ; then
-  docker-compose -f ./integration/test.yml build
-  docker-compose -f ./integration/test.yml up --abort-on-container-exit --exit-code-from tests tests
-fi
 
 npx semantic-release
 

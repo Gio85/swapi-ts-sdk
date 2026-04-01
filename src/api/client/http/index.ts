@@ -1,39 +1,36 @@
 import { ApiResponse, HOST, IHttpClient } from '../../../types'
-import Axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import { ApiError } from '../errors'
 
 export class HttpClient implements Partial<IHttpClient> {
   protected api: string = process.env.HOST_API || HOST.API
 
   public get<T>(endpoint: string, parameters?: unknown): ApiResponse<T> {
-    return Axios.get(`${this.api}/${endpoint}`, {
-      params: parameters || null,
-      ...this.getRequestConfig(),
-    })
-      .then(({ data, ...request }) => ({ ...data, status: request.status }))
-      .catch((error) => {
-        return this.errorParser(error, endpoint)
+    const url = new URL(`${this.api}/${endpoint}`)
+    if (parameters) {
+      Object.entries(parameters as Record<string, unknown>).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          url.searchParams.append(key, String(value))
+        }
       })
-  }
-
-  protected getRequestConfig(): AxiosRequestConfig {
-    const config: AxiosRequestConfig = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
     }
-    return config
-  }
 
-  protected errorParser(error: AxiosError, endpoint: string): Error {
-    let message: string
-    let statusCode: number | null = null
-    if (!error.response || !error.response.data) {
-      message = `Api client error - ${error.toString()}`
-    } else {
-      statusCode = error.response.status
-      message = error.response.data.detail
-    }
-    throw ApiError.invalidResponse({ message, statusCode, endpoint })
+    return fetch(url.toString(), {
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(async (response) => {
+        const data = await response.json()
+        if (!response.ok) {
+          throw ApiError.invalidResponse({
+            message: data.message || response.statusText,
+            statusCode: response.status,
+            endpoint,
+          })
+        }
+        return { ...data, status: response.status }
+      })
+      .catch((error) => {
+        if (error instanceof ApiError) throw error
+        throw ApiError.invalidResponse({ message: error.toString(), endpoint })
+      })
   }
 }
