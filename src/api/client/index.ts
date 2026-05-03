@@ -5,6 +5,7 @@ import { CharactersEndpoint } from './endpoints/characters'
 import { FilmsEndpoint } from './endpoints/films'
 import { PlanetsEndpoint } from './endpoints/planets'
 import { SearchEndpoint } from './endpoints/search'
+import { StatusEndpoint } from './endpoints/status'
 import { SpeciesEndpoint } from './endpoints/species'
 import { StarshipsEndpoint } from './endpoints/starships'
 import { VehiclesEndpoint } from './endpoints/vehicles'
@@ -21,6 +22,7 @@ export class ApiClient {
   public starships: StarshipsEndpoint
   public vehicles: VehiclesEndpoint
   public search: SearchEndpoint
+  public status: StatusEndpoint
 
   protected constructor(public readonly host = process.env.HOST_API || process.env.REACT_APP_HOST_API || HOST.API) {
     this.client = new HttpClient()
@@ -31,6 +33,7 @@ export class ApiClient {
     this.starships = new StarshipsEndpoint(this.client)
     this.vehicles = new VehiclesEndpoint(this.client)
     this.search = new SearchEndpoint(this.client)
+    this.status = new StatusEndpoint(this.client)
   }
 
   public static getInstance(): ApiClient {

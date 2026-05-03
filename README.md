@@ -22,8 +22,8 @@
 A TypeScript SDK for the [Star Wars API](https://github.com/Gio85/star-wars-api) — fully typed, with support for pagination, filtering, and cross-resource search.
 
 📦 **npm**: https://www.npmjs.com/package/swapi-ts-sdk  
-🚀 **API**: https://starwarsapi.up.railway.app  
-📖 **API Docs**: https://starwarsapi.up.railway.app/api/docs
+🚀 **API**: https://star-wars-api-9o3y.onrender.com  
+📖 **API Docs**: https://star-wars-api-9o3y.onrender.com/docs
 
 ---
 
@@ -154,6 +154,7 @@ List endpoints return:
 | `client.starships` | `list(params?)`, `read(id)` | Starships |
 | `client.vehicles` | `list(params?)`, `read(id)` | Vehicles |
 | `client.search` | `search({ q, type? })` | Cross-resource search |
+| `client.status` | `get()` | API and database health check |
 
 ### Query Parameters
 

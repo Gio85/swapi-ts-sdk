@@ -84,6 +84,12 @@ export interface ISearchResponse {
   status: number
 }
 
+export interface IStatusResponse {
+  status: 'ok' | 'degraded'
+  db: 'ok' | 'unreachable'
+  timestamp: string
+}
+
 interface IResource {
   id: number
   createdAt: string
